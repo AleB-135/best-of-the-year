@@ -36,5 +36,4 @@ public class Movie implements Serializable{
         return "Movie named: " + this.titolo;
     }
 
-
 }
