@@ -3,12 +3,58 @@
 
 <head>
     <title>Greeting</title>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.6/css/bootstrap.min.css}" />
 </head>
 
+<!-- NAVBAR -->
+<header>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary border border-black p-4">
+        <div class="container-fluid">
+            <a class="w-25 navbar-brand mb-lg-0 fs-1" th:href="@{/}">Best of</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto m-2 ms-5 mb-lg-0">
+                    <li class="nav-item">
+                        <button type="button" class="btn btn-outline-danger me-4 pt-2 pb-2 ps-5 pe-5"><a
+                                class="nav-link" th:href="@{movies}">Movies</a></button>
+                        <a th:href="@{movies}"></a>
+                        <!-- <a class="nav-link" th:href = "@{movies}">Movies</a> -->
+                    </li>
+                    <li class="nav-item">
+                        <button type="button"
+                            class="btn btn-outline-warning me-4 pt-2 pb-2 ps-5 pe-5 border border-black p-4"><a
+                                class="nav-link" th:href="@{songs}">Songs</a></button>
+                        <!-- <a class="nav-link" th:href = "@{songs}">Songs</a> -->
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
 <body>
-    <div>
-        <h1 th:text="'Best of the year by ' + ${name}"></h1>
+    <div class="w-100">
+
+        <h2 class="p-1 mt-5 text-center">Best of by Alessio Brusca</h2>
+        <div class="card d-flex p-1 mx-auto flex-fill" style="width: 400px;">
+
+            <img src="https://static.vecteezy.com/system/resources/thumbnails/049/329/506/small_2x/golden-3d-number-2025-new-year-2025-isolated-png.png" style="width: auto;" alt="Year 2025">
+
+        </div>
+        <div class="card d-flex p-1 mx-auto flex-fill border-black" style="width: 400px;">
+                <p class="p-4 text-center card-text mx-auto">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem exercitationem reprehenderit dignissimos iure maxime doloribus possimus incidunt aliquid deleniti sapiente explicabo perferendis, dolores officiis, ab sint quia quas dolorum nulla.
+                </p>  
+        </div>
+
     </div>
+
+    <!-- Bootsrap bundle with Popper -->
+    <script th:src="@{/webjars/bootstrap/5.3.6/js/bootstrap.bundle.min.js}"></script>
 </body>
 
 </html>
