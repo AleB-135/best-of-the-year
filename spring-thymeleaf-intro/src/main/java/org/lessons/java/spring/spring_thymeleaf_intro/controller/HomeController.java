@@ -27,13 +27,15 @@ public class HomeController<ItemRepository> {
 
     @GetMapping("/movies")
     private String movie(Model model){
-        model.addAttribute("movies", getBestMovies());
+        List<Movie> movies = getBestMovies();
+        model.addAttribute("movies", movies.toString());
         return "movies/home";
     }
 
     @GetMapping("/songs")
     private String song(Model model){
-        model.addAttribute("songs", getBestSongs());
+        List<Song> songs = getBestSongs();
+        model.addAttribute("songs", songs.toString());
         return "songs/home";
     }
 
@@ -41,11 +43,11 @@ public class HomeController<ItemRepository> {
     private List<Movie> getBestMovies(){
         List<Movie> moviesList = new ArrayList<>();
 
-        moviesList.add(new Movie("Forrest Gump", 0));
-        moviesList.add(new Movie("Kill Bill", 1));
-        moviesList.add(new Movie("Il Padrino", 2));
-        moviesList.add(new Movie("Pulp Fiction", 3));
-        moviesList.add(new Movie("Il Miglio Verde", 4));
+        moviesList.add(new Movie("Forrest Gump", 1));
+        moviesList.add(new Movie("Kill Bill", 2));
+        moviesList.add(new Movie("Il Padrino", 3));
+        moviesList.add(new Movie("Pulp Fiction", 4));
+        moviesList.add(new Movie("Il Miglio Verde", 5));
         
         return moviesList;
     }
@@ -54,20 +56,31 @@ public class HomeController<ItemRepository> {
     private List<Song> getBestSongs(){
         List<Song> songsList = new ArrayList<>();
 
-        songsList.add(new Song("Bohemian Rhapsody - Queen", 1));
-        songsList.add(new Song("Another Brick In The Wall - Pink Floyd", 1));
-        songsList.add(new Song("Thriller - Michael Jackson", 2));
-        songsList.add(new Song("All Along The Watchtower - Jimi Hendrix", 3));
-        songsList.add(new Song("Master of Puppets - Metallica", 4));
+        songsList.add(new Song("Bohemian Rhapsody", 1));
+        songsList.add(new Song("Another Brick In The Wall", 2));
+        songsList.add(new Song("Thriller", 3));
+        songsList.add(new Song("All Along The Watchtower", 4));
+        songsList.add(new Song("Master of Puppets", 5));
         
         return songsList;
     }
 
          
-    @GetMapping("/songs/{id}")
+  @GetMapping("/songs/{id}")
         private String songId(Model model, @PathVariable("id") Integer songId){
-            List<Song> songs = getBestSongs();
-            model.addAttribute("songId", songs.get(songId));
+            Boolean isSongFound = false;
+            Song song = null;
+
+            for (Song currentSong : getBestSongs()) {
+                if(currentSong.getId() == songId){
+                    isSongFound = true;
+                    song = currentSong;
+                    break;
+                }
+            }
+            
+            model.addAttribute("isSongFound", isSongFound);
+            model.addAttribute("song", song);
            
         return "songs/song_id";
     }
@@ -76,9 +89,19 @@ public class HomeController<ItemRepository> {
 
      @GetMapping("/movies/{id}")
         private String movieId(Model model, @PathVariable("id") Integer movieId){
-            List<Movie> movies = getBestMovies();
-            model.addAttribute("movieId", movies.get(movieId));
+            Boolean isMovieFound = false;
+            Movie movie = null;
+
+            for (Movie currentMovie : getBestMovies()) {
+                if(currentMovie.getId() == movieId){
+                    isMovieFound = true;
+                    movie = currentMovie;
+                    break;
+                }
+            }
             
+            model.addAttribute("isMovieFound", isMovieFound);
+            model.addAttribute("movie", movie);
            
         return "movies/movie_id";
     }
