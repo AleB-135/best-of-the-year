@@ -28,14 +28,14 @@ public class HomeController<ItemRepository> {
     @GetMapping("/movies")
     private String movie(Model model){
         List<Movie> movies = getBestMovies();
-        model.addAttribute("movies", movies.toString());
+        model.addAttribute("movies", movies);
         return "movies/home";
     }
 
     @GetMapping("/songs")
     private String song(Model model){
         List<Song> songs = getBestSongs();
-        model.addAttribute("songs", songs.toString());
+        model.addAttribute("songs", songs);
         return "songs/home";
     }
 

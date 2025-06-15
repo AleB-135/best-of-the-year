@@ -6,35 +6,15 @@
     <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.6/css/bootstrap.min.css}" />
 </head>
 
-<!-- NAVBAR -->
-<header>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary border border-black p-4">
-        <div class="container-fluid">
-            <a class="w-25 navbar-brand mb-lg-0 fs-1" th:href="@{/}">Best of</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto m-2 ms-5 mb-lg-0">
-                    <li class="nav-item">
-                        <button type="button" class="btn btn-outline-danger me-4 pt-2 pb-2 ps-5 pe-5"><a
-                                class="nav-link" th:href="@{movies}">Movies</a></button>
-                        <a th:href="@{movies}"></a>
-                        <!-- <a class="nav-link" th:href = "@{movies}">Movies</a> -->
-                    </li>
-                    <li class="nav-item">
-                        <button type="button"
-                            class="btn btn-outline-warning me-4 pt-2 pb-2 ps-5 pe-5 border border-black p-4"><a
-                                class="nav-link" th:href="@{songs}">Songs</a></button>
-                        <!-- <a class="nav-link" th:href = "@{songs}">Songs</a> -->
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
+ <!-- Bootstrap CSS -->
+    <th:block th:replace="~{fragments/stylesheets :: bootstrap}"></th:block>
+
+</head>
+<body>
+
+    <header>
+        <nav th:replace="~{fragments/navbar :: navbar('Best movies')}"></nav>
+    </header>
 
 <body>
     <div class="w-100">

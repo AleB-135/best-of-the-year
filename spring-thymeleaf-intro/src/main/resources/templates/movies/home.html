@@ -3,12 +3,31 @@
 
 <head>
     <title>Best Movies</title>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.6/css/bootstrap.min.css}" />
 </head>
 
+
+ <!-- Bootstrap CSS -->
+    <th:block th:replace="~{fragments/stylesheets :: bootstrap}"></th:block>
+
+</head>
 <body>
-    <div>
+
+    <header>
+        <nav th:replace="~{fragments/navbar :: navbar('Best movies')}"></nav>
+    </header>
+
+
+
+<body>
+    <div class="mt-5 text-center">
         <h1>Movies list: </h1>
-        <p th:text = "${movies}"></p>
+        <div class="card mx-auto mt-4" style="width: 300px;">
+            <ul class="list-group">
+                <li class="list-group-item" th:each="movie: ${movies}" th:data-custom-id="${movie.id}"><a th:href="@{/movies/{id}(id=${movie.id})}"th:text="${movie.titolo}"></li></a>
+                
+            </ul>
+        </div>
     </div>
 </body>
 
